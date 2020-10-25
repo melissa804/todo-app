@@ -1,11 +1,8 @@
 
 <div id="app">
   <p>TODOS</p>
-  <input type="text" placeholder="Add to do..." v-on:keyup.enter="addTodo">
- <div>
-  <date-pick v-model="selectedDate"
-  :hasInputElement="false"></date-pick>
-</div>
+  <input type="text" ref="inputTitle" placeholder="Add to do..." v-on:keyup.enter="addTodo">
+  <datetime v-model="selectedDate " ref="inputDate" placeholder="your deadline"></datetime>
   <ul>
 
     <li v-for="(todo,index) in todos" :key="todo.id" >
@@ -17,11 +14,11 @@
 
       <del v-if="todo.done">{{ todo.title }}</del>
       <span v-else>{{ todo.title }}</span>
-      
+      <div>{{todo.dueDate}}</div>
 
 
       <div>
-      <button v-on:click="EditTodo(index)">E</button>
+      <button v-if= "!editing "@click="EditTodo(index)" >E</button>
       <button v-on:click="removeTodo(index)">X</button>
 
     </div>
