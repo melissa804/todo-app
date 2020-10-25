@@ -1,28 +1,33 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld/>
+ <Todo/>
+   
+
+   
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld'
+import App from './App'
+import Datepick from 'vue-date-pick'
+
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  components: {Datepick},
+    data: () => ({
+      date: '2019-02-12'
+    })
+
+
+  
+ 
+  
+};
+
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>

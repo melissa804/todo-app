@@ -1,12 +1,33 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>todo-vue</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-  </body>
-</html>
+
+<div id="app">
+  <p>TODOS</p>
+  <input type="text" placeholder="Add to do..." v-on:keyup.enter="addTodo">
+ <div>
+  <date-pick v-model="selectedDate"
+  :hasInputElement="false"></date-pick>
+</div>
+  <ul>
+
+    <li v-for="(todo,index) in todos" :key="todo.id" >
+        <label>
+          <input type="checkbox" v-model="todo.done">
+
+      </label>
+
+
+      <del v-if="todo.done">{{ todo.title }}</del>
+      <span v-else>{{ todo.title }}</span>
+      
+
+
+      <div>
+      <button v-on:click="EditTodo(index)">E</button>
+      <button v-on:click="removeTodo(index)">X</button>
+
+    </div>
+
+    </li>
+
+  </ul>
+
+</div>
