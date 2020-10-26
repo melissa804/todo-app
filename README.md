@@ -3,7 +3,7 @@ Simple To-do list application
 
 
 ## Description
-This repository is for the folders containing the vue,html and javascript code that makes up my complete,simple and responsive To-do App. 
+This repository is for the folders containing the html and javascript code that makes up my complete,simple and responsive To-do App.  Using Vue.js Frameworkss
 
 ## Built with
 * Vue.2js
