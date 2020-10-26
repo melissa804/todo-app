@@ -10,9 +10,6 @@ import '@fortawesome/fontawesome-free/js/all.js';
 
 Vue.component('datetime', Datetime);
 
-// if (!StoredToDos) StoredToDos = {}
-// console.log(StoredToDos)
-
 
 new Vue({
   el: "#app",
@@ -38,31 +35,31 @@ mounted(){
       localStorage.setItem("ToDos",JSON.stringify(this.todos))
     },
     
-  	addTodo({target}){
-      
-      if((target.value.trim()).length == 0) {
+  	addTodo(){
+      // {target}
+      console.log((this.$refs.inputTitle.value))
+      if((this.$refs.inputTitle.value.trim()).length == 0) {
         return;
       }
       if(this.editing == true){
         this.editing = false
-        this.todos[this.localId].title = target.value
+        this.todos[this.localId].title = this.$refs.inputTitle.value
         this.todos[this.localId].dueDate = this.selectedDate.substring(0,10)
-        console.log(target.value)
-        target.value = ''
+        console.log(this.$refs.inputTitle.value)
+        this.$refs.inputTitle.value = ''
         localStorage.setItem("ToDos",JSON.stringify(this.todos))
         return;
       }
       
     	this.todos.push({
         title: 
-        target.value, 
+        this.$refs.inputTitle.value, 
         done: false, 
         dueDate:this.selectedDate.substring(0,10),
         beforeEditCache:'',
         
       })
-      target.value = ''
-      target.dueDate=''
+      this.$refs.inputTitle.value = ''
       this.todos.sort((a,b) => (a.title > b.title) ? 1: -1)
       localStorage.setItem("ToDos",JSON.stringify(this.todos))
     },
@@ -84,22 +81,7 @@ mounted(){
       this.$refs.inputTitle.value=this.todos[index].title
       this.$refs.inputTitle.focus();
     },
-    doneEdit(){
-      if(this.title.trim() == ""){
-        this.title= this.beforeEditCache;
-      }
-      this.$emit('finishedEdit',{
-        todos:{
-          index:this.index,
-          title:this.title,
-          done: this.done,
-          dueDate: this.dueDate,
-        }
-      })
-    },
-    cancelEdit(){
-      this.title = this.beforeEditCache;
-    }
+  
 
 
   }

@@ -13,11 +13,8 @@
 
 .add-to-do{
   display: flex;
-    align-items: center;
-    width: 360px;
+    width: 300px;
     height:40px;
-    background-color: #FFF;
-    padding: 10px;
     border: none;
     margin-bottom: 5px;
     
@@ -59,6 +56,7 @@ background-color: white;
     margin-top:60px ;
     background-color: rgba(146, 146, 145, 0.1);
     font-family: 'Titillium Web', sans-serif;
+    
 }
 
 
@@ -67,6 +65,7 @@ background-color: white;
     width:380px;
     margin:0 auto;
     color: tomato;
+  
     
 }
 #cancel{
@@ -82,7 +81,8 @@ background-color: white;
 
 .header{
     width: 380px;
-    height:200px;
+    height:100px;
+    margin-bottom: 5px;
 
     border-radius: 15px 15px 0 0;
     position: relative;
@@ -100,7 +100,9 @@ background-color: white;
 
 }
 
-
+.enter{
+  display: flex;
+}
 
 
 
@@ -151,6 +153,20 @@ h1
  margin-right: 2px;
 
 }
+table{
+  width: 380px;
+}
+
+td{
+
+  text-align: center;
+}
+
+.tdTitle{
+  text-align: left;
+}
+
+
 
 </style>
 
@@ -158,51 +174,52 @@ h1
   <div id="app" class="container">
     
     <div class="header"> 
-     
+    
       <h1>To-Do List</h1></div>
    <div class="calendar">
      <div class="icon"><i class="far fa-calendar-alt fa-2x"></i></div>
-     <div><datetime v-model="selectedDate " ref="inputDate" placeholder="select date" class="duedate"> </datetime></div>
+     <div><datetime v-model="selectedDate" ref="inputDate" placeholder="select date" class="duedate"  class="far fa-calendar-alt fa-2x" ></datetime></div>
 
 </div>
-  <input type="text" ref="inputTitle" placeholder="Add to do..." v-on:keyup.enter="addTodo" class="add-to-do">
-  
-  
- 
-  
-  <ul class="list">
+<table>
+  <td>
+    <input type="text" ref="inputTitle" placeholder="Add to do..."  class="add-to-do">
+  </td>
+  <td class="tdTitle">
+    <button @click="addTodo">Enter</button>
+  </td>
 
-    <li v-for="(todo,index) in todos" :key="todo.id" >
+
+  </table>
+  <table>
+    <tr v-for="(todo,index) in todos" :key="todo.id">
+      <td><input type="checkbox" v-model="todo.done"></td>
+      <td class="tdTitle">
         
-      
-    
-
-<div class= "todo-item" >
    
-          
+        <del   v-if="todo.done">{{ todo.title }}</del>
+        <span v-else>{{ todo.title }}</span>
+      </td>
+      <td>
+        <del   v-if="todo.done">{{ todo.dueDate }}</del>
+        <span v-else>{{todo.dueDate }}</span>
+      </td>
+      <td>
+<button v-if= "!editing "@click="EditTodo(index)" class="edit">Edit</button>
+    <button v-on:click="removeTodo(index)"><i id="cancel"  class="fas fa-trash-alt"></i></button>
+      </td>
+    </tr>
+  </table>
 
-     <input type="checkbox" v-model="todo.done">
-     
-      <del   v-if="todo.done">{{ todo.title }}</del>
-      <span v-else>{{ todo.title }}</span>
-      <del   v-if="todo.done">{{ todo.dueDate }}</del>
-      <span v-else>{{todo.dueDate }}</span>
-      <!-- <div>{{todo.dueDate}}</div> -->
-    
-     <button v-if= "!editing "@click="EditTodo(index)" class="edit">Edit</button>
-      <button v-on:click="removeTodo(index)"><i id="cancel"  class="fas fa-trash-alt"></i></button>
-</div>
-    </div>
+  
 
-
-      <div>
      
 
     </div>
 
     </li>
 
-  </ul>
+  </ul> --> 
 
 </div>
 </body>
