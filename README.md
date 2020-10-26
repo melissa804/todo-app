@@ -14,7 +14,6 @@ This repository is for the folders containing the html and javascript code that 
 * JSON
 
 ## Resources via the following CDN's:
-* Bootstrap CDN version 3.4.1 
 * Font Awesome version 5.13.1
 * Google Fonts -Font Family Titillium Web
 * Javascript -jquery version 1.12.1
