@@ -6,7 +6,7 @@ import { Datetime } from 'vue-datetime';
 import 'vue-datetime/dist/vue-datetime.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 import '@fortawesome/fontawesome-free/js/all.js';
-
+import '@/assets/style.css';
 
 Vue.component('datetime', Datetime);
 

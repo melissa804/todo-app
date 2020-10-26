@@ -14,6 +14,7 @@ import Vue from 'vue';
 
 export default {
   name: 'App',
+ 
   
 };
 
@@ -22,3 +23,6 @@ export default {
 <style>
 
 </style>
+
+ 
+
