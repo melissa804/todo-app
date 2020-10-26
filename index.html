@@ -5,59 +5,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>todoS</title>
   <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap" rel="stylesheet">
-  
 </head>
 
 <body>
-  <div id="app" class="container">
-    
+  <div id="app" class="container"> 
+
     <div class="header"> 
-    
       <h1>To-Do List</h1></div>
-   <div class="calendar">
-     <div class="icon"><i class="far fa-calendar-alt fa-2x"></i></div>
-     <div><datetime v-model="selectedDate" ref="inputDate" placeholder="select date" class="duedate"  class="far fa-calendar-alt fa-2x" ></datetime></div>
+    <div class="calendar">
 
+    <div class="icon">
+      <i class="far fa-calendar-alt fa-2x"></i>
+    </div>
+    <div>
+      <datetime v-model="selectedDate" ref="inputDate" placeholder="select date" class="duedate"  class="far fa-calendar-alt fa-2x" ></datetime>
+    </div>
 </div>
-<table>
-  <td>
-    <input type="text" ref="inputTitle" placeholder="Add to do..."  class="add-to-do">
-  </td>
-  <td class="tdTitle">
-    <button @click="addTodo">Enter</button>
-  </td>
 
+<div>
+   <table>
+      <td>
+         <input type="text" ref="inputTitle" placeholder="Add to do..."  class="add-to-do">
+      </td>
+     <td class="tdTitle">
+        <button @click="addTodo">Enter</button>
+      </td>
+    </table>
 
-  </table>
   <table>
     <tr v-for="(todo,index) in todos" :key="todo.id">
-      <td><input type="checkbox" v-model="todo.done"></td>
-      <td class="tdTitle">
-        
-   
-        <del   v-if="todo.done">{{ todo.title }}</del>
-        <span v-else>{{ todo.title }}</span>
-      </td>
-      <td>
-        <del   v-if="todo.done">{{ todo.dueDate }}</del>
-        <span v-else>{{todo.dueDate }}</span>
-      </td>
-      <td>
-<button v-if= "!editing "@click="EditTodo(index)" class="edit">Edit</button>
-    <button v-on:click="removeTodo(index)"><i id="cancel"  class="fas fa-trash-alt"></i></button>
-      </td>
+        <td>
+          <input type="checkbox" v-model="todo.done">
+        </td>
+       <td class="tdTitle">
+          <del   v-if="todo.done">{{ todo.title }}</del>
+          <span v-else>{{ todo.title }}</span>
+       </td>
+       <td>
+         <del   v-if="todo.done">{{ todo.dueDate }}</del>
+         <span v-else>{{todo.dueDate }}</span>
+       </td>
+       <td>
+        <button v-if= "!editing "@click="EditTodo(index)" class="edit">Edit</button>
+        <button v-on:click="removeTodo(index)"><i id="cancel"  class="fas fa-trash-alt"></i></button>
+       </td>
     </tr>
-  </table>
-
-
-    </div>
-
-    </li>
-
-  </ul> 
-
-</div>
-</body>
+   </table>
+  </div>
+  </div>
+ </body>
 </html>
 
 

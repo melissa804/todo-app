@@ -1,103 +1,90 @@
-
+/* styling for the app */
 
 *{box-sizing: border-box }
 
 
+/* styling for the container positioning of To-do App */
+
+body{
+  padding: 0;
+  margin-top:60px ;
+  background-color: rgba(146, 146, 145, 0.1);
+  font-family: 'Titillium Web', sans-serif;   
+}
+
+.container{
+  height: 200px;
+  width:380px;
+  margin:0 auto;
+  color: tomato;
+}
+
+.header{
+  width: 380px;
+  height:100px;
+  margin-bottom: 5px;
+  border-radius: 15px 15px 0 0;
+  position: relative;
+  align-items: center;
+  background-color: tomato;
+}
+
+h1
+{
+  display: block;
+  text-align: center;
+  color: white;
+}
 
 .add-to-do{
   display: flex;
-    width: 300px;
-    height:40px;
-    border: none;
-    margin-bottom: 5px;
-    
+  width: 300px;
+  height:40px;
+  border: none;
+  margin-bottom: 5px;
 }
 
 .todo-item{
-
-display: flex;
-
-justify-content: space-between;
-font-size: 16px;
-padding-top: 14px;
-margin-bottom: 14px;
-  
+ display: flex;
+ justify-content: space-between;
+ font-size: 16px;
+ padding-top: 14px;
+ margin-bottom: 14px; 
 }
 
 .duedate{
   position: relative;
-    width: 200px;
-    height:300x;
-    background-color: #FFF;
-    padding: 10px;
-    border: none;
-    margin-bottom: 5px;
-    
-
+  width: 200px;
+  height:300x;
+  background-color: #FFF;
+  padding: 10px;
+  border: none;
+  margin-bottom: 5px; 
 }
 
-ul {
-    list-style:none;
-    display: block;
-padding: 0px;
-background-color: white;
-
-}
-
-  body{
-    padding: 0;
-    margin-top:60px ;
-    background-color: rgba(146, 146, 145, 0.1);
-    font-family: 'Titillium Web', sans-serif;
-    
-}
-
-
-.container{
-    height: 200px;
-    width:380px;
-    margin:0 auto;
-    color: tomato;
-  
-    
-}
 #cancel{
     color: black;
     cursor: pointer;
 }
 
 #cancel:hover{
-
     color:rgb(255, 255, 255);
     transform: scale(1.1);
 }
 
-.header{
-    width: 380px;
-    height:100px;
-    margin-bottom: 5px;
 
-    border-radius: 15px 15px 0 0;
-    position: relative;
-    align-items: center;
-    background-color: tomato;
-}
 .edit{
   color: black;
   cursor: pointer;
-
-  
 }
+
 .edit:hover{
   color: white;
-
 }
 
 .enter{
   display: flex;
 }
-
-
 
 button{
 display:inline-block;
@@ -115,43 +102,35 @@ text-align:center;
 transition: all 0.2s;
 background-color: tomato;
 }
+
+
 button:hover{
 border-color: rgba(255,255,255,1);
 }
+
 @media all and (max-width:30em){
  button{
 display:block;
 margin:0.2em auto;
+     }
 }
-}
-
-h1
-{
-  display: block;
-  text-align: center;
-  color: white;
-}
-
 
 .calendar{
   display: flex;
   margin-bottom: 10px;
- 
 }
 
 .icon{
-
  padding-top: 5px;
  justify-content: space-around;
  margin-right: 2px;
-
 }
+
 table{
   width: 380px;
 }
 
 td{
-
   text-align: center;
 }
 
