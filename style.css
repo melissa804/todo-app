@@ -1,0 +1,9 @@
+#cancel{
+    color: black;
+}
+
+#cancel:hover{
+
+    color:indianred;
+    transform: scale(1.1);
+}
