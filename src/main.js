@@ -8,28 +8,24 @@ import '@/assets/style.css';
 
 Vue.component('datetime', Datetime);
 
-new Vue({
+var vm = new Vue({
   el: "#app",
   data: {
     editing:false,
     localId:0,
-  	todos: [
-     
-        ]
+  	todos: []
       },
 
 mounted(){
-  let StoredToDos = JSON.parse(localStorage.getItem('ToDos'))
+  let StoredToDos = localStorage.getItem('ToDos')
   console.log(JSON.stringify(StoredToDos))
-  this.todos= StoredToDos
+  
+ this.todos= StoredToDos ? JSON.parse(StoredToDos):[];
 },
   
   methods: {
-    readStorage(){
-      this.todos= JSON.parse(localStorage).getItem("ToDos")
-    },
     writeStorage(){
-      localStorage.setItem("ToDos",JSON.stringify(this.todos))
+      localStorage.setItem("ToDos",JSON.stringify( vm.todos))
     },
     
   	addTodo(){
@@ -39,15 +35,15 @@ mounted(){
       }
       if(this.editing == true){
         this.editing = false
-        this.todos[this.localId].title = this.$refs.inputTitle.value
-        this.todos[this.localId].dueDate = this.selectedDate.substring(0,10)
+        vm.todos[this.localId].title = this.$refs.inputTitle.value
+        vm.todos[this.localId].dueDate = this.selectedDate.substring(0,10)
         console.log(this.$refs.inputTitle.value)
         this.$refs.inputTitle.value = ''
-        localStorage.setItem("ToDos",JSON.stringify(this.todos))
+        localStorage.setItem("ToDos",JSON.stringify( vm.todos))
         return;
       }
       
-    	this.todos.push({
+      vm.todos.push({
       title: 
       this.$refs.inputTitle.value, 
       done: false, 
@@ -56,25 +52,25 @@ mounted(){
         
       })
       this.$refs.inputTitle.value = ''
-      this.todos.sort((a,b) => (a.title > b.title) ? 1: -1)
-      localStorage.setItem("ToDos",JSON.stringify(this.todos))
+      vm.todos.sort((a,b) => (a.title > b.title) ? 1: -1)
+      localStorage.setItem("ToDos",JSON.stringify( vm.todos))
     },
 
     
     removeTodo(id) {
       console.log(id)
-      this.todos.splice(id,1)
-      localStorage.setItem("ToDos",JSON.stringify(this.todos))
+      vm.todos.splice(id,1)
+      localStorage.setItem("ToDos",JSON.stringify( vm.todos))
     },
 
 
     EditTodo(index){
       this.editing=true
       this.localId= index
-      this.beforeEditCache= this.todos[index].title
+      this.beforeEditCache=  vm.todos[index].title
       console.log(this.editing)
-      console.log(this.todos[index].title)
-      this.$refs.inputTitle.value=this.todos[index].title
+      console.log( vm.todos[index].title)
+      this.$refs.inputTitle.value= vm.todos[index].title
       this.$refs.inputTitle.focus();
     },
   }
